@@ -47,7 +47,7 @@ const taskSchema = new mongoose.Schema(
             required: true
         },
         listSchema: [listSchema],
-
+        noteSchema: [noteSchema]
     },
     { timestamps: true }
 );
