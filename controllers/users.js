@@ -34,7 +34,7 @@ router.post('/signin', async (req, res) => {
             res.status(401).json({ error: 'Something went wrong! Try again.' });
         }
     } catch (error) {
-        res.status(400).json({ error: 'Something went wrong! Try again.' });
+        res.status(400).json({ error: 'Something went wrong! Try again.' });        
     };
 });
 
