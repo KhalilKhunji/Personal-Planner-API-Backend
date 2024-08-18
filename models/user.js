@@ -9,7 +9,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     }
-})
+});
 
 userSchema.set('toJSON', {
     transform: (document, returnedObject) => {
