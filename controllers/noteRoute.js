@@ -29,4 +29,16 @@ router.put('/:taskId/notes/:noteId', async (req, res) => {
     };
 });
 
+router.delete('/:taskId/notes/:noteId', async (req, res) => {
+    try {
+        const task = await Task.findById(req.params.taskId);
+        if (!task) return res.status(404).json({error: 'Task not found'});
+        task.notes.remove({ id: req.params.noteId });
+        await task.save();
+        res.status(200).json(task.notes);
+    } catch (error) {
+        res.status(422).json({message: 'Unprocessable content'});
+    };
+});
+
 module.exports = router;
