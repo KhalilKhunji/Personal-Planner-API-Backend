@@ -10,6 +10,7 @@ const usersRouter = require('./controllers/users');
 const profilesRouter = require('./controllers/profiles');
 const tasksRouter = require('./controllers/taskRoute.js');
 const notesRouter = require('./controllers/noteRoute.js');
+const listsRouter = require('./controllers/listRoute.js');
 
 // Middleware
 const verifyToken = require('./middleware/verify-token');
@@ -25,8 +26,7 @@ app.use(express.json());
 app.use('/test-jwt', testJWTRouter);
 app.use('/users', usersRouter);
 app.use('/profiles', verifyToken, profilesRouter);
-app.use('/tasks', verifyToken, tasksRouter);
-app.use('/tasks', verifyToken, notesRouter);
+app.use('/tasks', verifyToken, tasksRouter, listsRouter, notesRouter);
 
 app.listen(port, () => {
   console.log('The express app is ready!');
