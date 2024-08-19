@@ -21,7 +21,11 @@ router.post('/:taskId/items', async (req, res) => {
 router.put('/:taskId/items/:itemId', async (req, res) => {
     try {
         const task = await Task.findById(req.params.taskId);
-        const list = task.items.id(req.params.listId);
+
+        
+        // Looked for specific comment on hoot post
+        const list = task.items.id(req.params.itemId);
+
         if (!list) {
           return res.status(404).send("list not found!")
         };
@@ -36,7 +40,9 @@ router.put('/:taskId/items/:itemId', async (req, res) => {
 router.delete("/:taskId/items/:itemId", async (req, res) => {
     try {
         const task = await Task.findById(req.params.taskId)
-        task.items.remove({ _id: req.params.listId })
+        
+
+        task.items.remove({ _id: req.params.itemId })
         await task.save()
         res.status(200).json({ message : "list deleted"})
     } catch (error) {
