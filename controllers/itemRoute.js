@@ -3,7 +3,7 @@ const router = express.Router();
 const Task = require("../models/task");
 
 
-router.post('/:taskId/listitem', async (req, res) => {
+router.post('/:taskId/items', async (req, res) => {
     try {
       const task = await Task.findById(req.params.taskId);
       task.items.push(req.body);
@@ -23,7 +23,7 @@ router.post('/:taskId/listitem', async (req, res) => {
 
 
 
-  router.put('/:taskId/listitem/:listId', async (req, res) => {
+  router.put('/:taskId/items/:itemId', async (req, res) => {
     try {
 
         // Looked for list post
@@ -46,7 +46,7 @@ router.post('/:taskId/listitem', async (req, res) => {
     }
   })
 
-  router.delete("/:taskId/listitem/:listId", async (req, res) => {
+  router.delete("/:taskId/items/:itemId", async (req, res) => {
     try {
         const task = await Task.findById(req.params.taskId)
         
