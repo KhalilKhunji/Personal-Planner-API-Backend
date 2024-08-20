@@ -24,7 +24,7 @@ router.put('/:taskId/items/:itemId', async (req, res) => {
         };
         item.set(req.body);
         await task.save();
-        res.status(200).json({ message: 'Ok!'})
+        res.status(200).json(item);
     } catch(error) {
       res.status(500).json(error);
     }
