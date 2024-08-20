@@ -33,7 +33,7 @@ router.delete('/:taskId/notes/:noteId', async (req, res) => {
     try {
         const task = await Task.findById(req.params.taskId);
         if (!task) return res.status(404).json({error: 'Task not found'});
-        task.notes.remove({ id: req.params.noteId });
+        task.notes.remove({ _id: req.params.noteId });
         await task.save();
         res.status(200).json(task.notes);
     } catch (error) {

@@ -20,6 +20,7 @@ router.get("/", async (req, res) => {
         .populate("user")
         .sort({ createdAt: "desc" });
         res.status(200).json(tasks);
+
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
